@@ -80,6 +80,24 @@ fab makemigrations
 fab migrate
 ```
 
+Чтобы сервис принимал принимал webhooks от instagram, установите и запустите туннель, например, от Tuna:
+* Скачайте клиент по инструкции: https://my.tuna.am/
+```
+Команда для windows (PowerShell): winget install --id yuccastream.tuna
+Команда для macOS: brew install yuccastream/tap/tuna
+Команда для Linux: curl -sSLf https://get.tuna.am | sh
+```
+* Установите токен:
+```
+tuna config save-token <YOUR_TUNA_TOKEN>
+```
+* Запустите туннель командой:
+```
+tuna http 8080 --domain=<your_domain> --location=<domain_location>
+# Или
+tuna http 8000 --subdomain=insta-service-test --location=nl
+```
+
 ### Список доступных эндпоинтов:
 
 1) **Получение списка последних сообщений с пользователем:**

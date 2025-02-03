@@ -1,6 +1,7 @@
 class MessageNotFoundException(Exception):
     detail = 'Message not found'
 
+
 class TokenNotCorrect(Exception):
     detail = 'Token is not correct'
 

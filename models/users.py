@@ -1,6 +1,4 @@
-from typing import Optional
-
-from sqlalchemy import BigInteger, TIMESTAMP
+from sqlalchemy import BigInteger
 from sqlalchemy.orm import Mapped, mapped_column
 
 from database import Base
@@ -11,7 +9,6 @@ class InstagramUserProfile(Base):
 
     id: Mapped[int] = mapped_column(
         BigInteger,
-        #
         primary_key=True, nullable=False, unique=True
     )
     name: Mapped[str] = mapped_column(
@@ -32,16 +29,3 @@ class InstagramUserProfile(Base):
     is_business_follow_user: Mapped[bool] = mapped_column(
         nullable=True
     )
-
-
-# class UserProfile(Base):
-#     __tablename__ = 'user_profiles'
-
-#     id: Mapped[int] = mapped_column(
-#         BigInteger,
-#         #
-#         primary_key=True, nullable=False, unique=True
-#     )
-#     username: Mapped[str] = mapped_column(
-#         nullable=True, unique=True
-#     )

@@ -1,12 +1,10 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, status
-
 from dependency import get_instagram_user_service
 from exception import UserDataNotAvailable, UserNotFound
+from fastapi import APIRouter, Depends, HTTPException, status
 from schema import InstagramUserProfileSchema
 from service import InstagramUserService
-
 
 router = APIRouter(
     prefix='/user',
@@ -23,9 +21,7 @@ async def get_user(
                             Depends(get_instagram_user_service)],
     user_id: int | None,
     username: str | None = None
-    # + В Schema/Depends валидая
 ) -> InstagramUserProfileSchema:
-    # Получаем информацию о пользователе по его id
     try:
         return user_service.get_user_from_instagram(
             user_id=user_id, username=username

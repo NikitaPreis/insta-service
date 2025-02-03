@@ -17,8 +17,7 @@ class InstagramUserService:
         self, user_id: int | None, username: str | None
     ) -> InstagramUserProfileSchema:
         user_schema = self.instagram_client.get_user(
-            user_id=user_id, 
-            # username=username
+            user_id=user_id
         )
         return user_schema
 
@@ -42,16 +41,3 @@ class InstagramUserService:
                 username=instagram_user_schema.username
             )
         return user_id
-
-    # def create_user_if_not_exist(self, user_id: int) -> int:
-    #     if not self.user_repository.get_user(user_id=user_id):
-    #         instagram_user_schema = self.instagram_client.get_user(
-    #             user_id=user_id
-    #         )
-    #         if not instagram_user_schema:
-    #             raise UserNotFound
-    #         self.user_repository.create_user(
-    #             user_id=instagram_user_schema.id,
-    #             username=instagram_user_schema.username
-    #         )
-    #     return user_id

@@ -1,0 +1,26 @@
+# Для корректной работы приложение следует:
+# 1) Установить значения для переменных окружения;
+# 2) Переименовать файл в ".env"
+
+POSTGRES_PASSWORD=mysecretpassword
+POSTGRES_USER=postgres
+POSTGRES_DB=instagram_service
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+
+DB_DRIVER=postgresql+psycopg2
+DB_PASSWORD=mysecretpassword
+DB_USER=postgres
+DB_NAME=instagram_service
+DB_HOST=localhost
+DB_PORT=5432
+
+
+INSTAGRAM_APP_SECRET=<SECRET>
+INSTAGRAM_APP_ID=<ID>
+
+INSTAGRAM_USER_TOKEN=<TOKEN>
+INSTAGRAM_WEBHOOK_TOKEN=<TOKEN>
+INSTAGRAM_SEND_MESSAGE_URL=https://graph.instagram.com/v22.0/me/messages
+INSTAGRAM_ACCOUNT_ID=<ID>
+INSTAGRAM_ACCOUNT_SCOPED_ID=<ID>

@@ -1,6 +1,4 @@
-from typing import Optional
-
-from sqlalchemy import ForeignKey, DateTime, TIMESTAMP
+from sqlalchemy import ForeignKey, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 
 from database import Base
@@ -13,9 +11,6 @@ class InstagramMessage(Base):
     sent_time: Mapped[int] = mapped_column(DateTime, nullable=False)
     mid: Mapped[str] = mapped_column(nullable=False)
     text: Mapped[str] = mapped_column(nullable=False)
-    # user_id: Mapped[str] = mapped_column(
-    #     ForeignKey('instagram_user_profiles.id'), nullable=False
-    # )
     sender_id: Mapped[str] = mapped_column(
         ForeignKey('instagram_user_profiles.id'), nullable=False
     )

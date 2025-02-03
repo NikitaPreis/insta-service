@@ -4,9 +4,9 @@ from clients import InstagramClient
 from exception import MessageNotFoundException, UserNotFound
 from models import InstagramMessage
 from repository import InstagramMessageRepository, UserRepository
-from settings import Settings
 from schema import (InstagramMessageReadSchema, InstagramSendMessageBodySchema,
-                    InstagramMessageReadSchema, InstagramUserProfileSchema)
+                    InstagramUserProfileSchema)
+from settings import Settings
 
 
 @dataclass
@@ -39,8 +39,6 @@ class InstagramMessageService:
     def send_message(
         self, recipient_id: int, message: InstagramSendMessageBodySchema
     ) -> InstagramSendMessageBodySchema:
-        # if not self.user_repository.get_user(user_id=recipient_id):
-        #     raise UserNotFound
         message = self.instagram_client.send_text_message(
             recipient_id=recipient_id, text=message.message.text
         )

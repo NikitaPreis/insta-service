@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 
 from clients import InstagramClient
-from exception import TokenNotCorrect, UserNotFound
-from repository import InstagramMessageRepository, UserRepository
-from settings import Settings
-from service import InstagramUserService
+from exception import TokenNotCorrect
+from repository import InstagramMessageRepository
 from schema import InstagramNewMessageDataSchema
+from service import InstagramUserService
+from settings import Settings
 
 
 @dataclass

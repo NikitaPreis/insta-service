@@ -40,4 +40,5 @@ class Settings(BaseSettings):
             'Content-Type': self.CONTENT_TYPE_JSON_HEADER
         }
 
+
 settings = Settings()

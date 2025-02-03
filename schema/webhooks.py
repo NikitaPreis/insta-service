@@ -1,7 +1,6 @@
-from datetime import datetime 
-from typing import Any
+from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class InstagramNewMessageSenderSchema(BaseModel):
@@ -20,37 +19,16 @@ class InstagramMessageSchema(BaseModel):
 class InstagramNewMessageDataSchema(BaseModel):
     sender: InstagramNewMessageSenderSchema
     recipient: InstagramNewMessageRecipientSchema
-    timestamp: datetime # datetime
+    timestamp: datetime
     message: InstagramMessageSchema
 
 
 class InstagramMessageEntrySchema(BaseModel):
-    id: int # str?
+    id: int
     time: int
     messaging: list[InstagramNewMessageDataSchema]
-
-# CHANGES - FIELD VALUE
-# class InstagramNewMessageSchema(BaseModel):
-#     field: str
-#     value: InstagramNewMessageDataSchema
-
-# CHANGES
-# class InstagramMessageEntrySchema(BaseModel):
-#     id: int # str?
-#     time: int
-#     changes: list[InstagramNewMessageSchema]
 
 
 class InstagramMessageSchema(BaseModel):
     object: str
     entry: list[InstagramMessageEntrySchema]
-
-
-# class TestMessage(BaseModel):
-#     object: Any
-#     entry: Any
-
-
-class MessageCreateSchema(BaseModel):
-    pass
-

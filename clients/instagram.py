@@ -2,9 +2,8 @@ from dataclasses import dataclass
 import requests
 
 from exception import MessageNotSent, UserDataNotAvailable
-from schema import (InstagramSendMessageSchema,
-                    InstagramSendMessageBodySchema,
-                    InstagramSendMessageRecipient,
+from schema import (InstagramSendMessageBodySchema,
+                    InstagramSendMessageRecipient, InstagramSendMessageSchema,
                     InstagramUserProfileSchema)
 from settings import Settings
 
@@ -13,16 +12,14 @@ from settings import Settings
 class InstagramClient:
     settings: Settings
 
-
     def get_user(self, user_id: int) -> InstagramUserProfileSchema:
         url = self._get_instagram_user_url(user_id=user_id)
         response = requests.get(url=url)
-        if (response.ok
-            and self.settings.CONTENT_TYPE_JSON_HEADER
-            in response.headers.get('Content-Type'), ''):
-                user_data = response.json()
-                user_schema = InstagramUserProfileSchema(**user_data)
-                return user_schema
+        if (response.ok and self.settings.CONTENT_TYPE_JSON_HEADER
+                in response.headers.get('Content-Type'), ''):
+            user_data = response.json()
+            user_schema = InstagramUserProfileSchema(**user_data)
+            return user_schema
         raise UserDataNotAvailable
 
     def send_text_message(
@@ -62,7 +59,7 @@ class InstagramClient:
             'recipient': {
                 'id': recipient_id
             },
-            'message':{
+            'message': {
                 'text': text
             }
         }

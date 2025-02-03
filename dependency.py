@@ -6,8 +6,8 @@ from sqlalchemy.orm import Session
 from clients import InstagramClient
 from database import get_db_session
 from repository import InstagramMessageRepository, UserRepository
-from service import (InstagramMessageService, InstagramWebhookService,
-                     InstagramUserService)
+from service import (InstagramMessageService, InstagramUserService,
+                     InstagramWebhookService)
 from settings import Settings
 
 
@@ -57,11 +57,16 @@ def get_instagram_messages_service(
         instagram_client=instagram_client
     )
 
+
 def get_instagram_webhook_service(
-    message_repository: Annotated[InstagramMessageRepository,
-                                  Depends(get_instagram_message_repository)],
-    instagram_user_service: Annotated[InstagramUserService,
-                            Depends(get_instagram_user_service)],
+    message_repository: Annotated[
+        InstagramMessageRepository,
+        Depends(get_instagram_message_repository)
+    ],
+    instagram_user_service: Annotated[
+        InstagramUserService,
+        Depends(get_instagram_user_service)
+    ],
     instagram_client: Annotated[InstagramClient,
                                 Depends(get_instagram_client)]
 ) -> InstagramWebhookService:

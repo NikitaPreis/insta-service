@@ -1,15 +1,11 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Body, Query, Depends, HTTPException, status
-from fastapi.requests import Request
-import requests
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 
 from dependency import get_instagram_webhook_service
 from exception import TokenNotCorrect
-from service import InstagramWebhookService
-from settings import Settings
 from schema import InstagramMessageSchema
-
+from service import InstagramWebhookService
 
 router = APIRouter(
     prefix='/webhook'
@@ -19,12 +15,12 @@ router = APIRouter(
 @router.get('')
 async def webhook(
     instagram_webhook_service: Annotated[
-        InstagramWebhookService, 
+        InstagramWebhookService,
         Depends(get_instagram_webhook_service)
     ],
-    hub_mode : Annotated[str, Query(alias='hub.mode')],
-    hub_challenge : Annotated[int, Query(alias='hub.challenge')],
-    hub_verify_token : Annotated[str, Query(alias='hub.verify_token')]
+    hub_mode: Annotated[str, Query(alias='hub.mode')],
+    hub_challenge: Annotated[int, Query(alias='hub.challenge')],
+    hub_verify_token: Annotated[str, Query(alias='hub.verify_token')]
 ) -> int:
     print('VERIFY')
     try:
@@ -45,7 +41,7 @@ async def webhook(
 )
 async def webhook(
     instagram_webhook_service: Annotated[
-        InstagramWebhookService, 
+        InstagramWebhookService,
         Depends(get_instagram_webhook_service)
     ],
     body: InstagramMessageSchema,
