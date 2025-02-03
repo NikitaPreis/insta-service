@@ -13,9 +13,11 @@ class Settings(BaseSettings):
     GET_MESSAGES_DEFAULT_COUNT: int = 50
 
     INSTAGRAM_ACCOUNT_ID: int = 12345
+    INSTAGRAM_ACCOUNT_SCOPED_ID: int = 12345
     INSTAGRAM_USER_TOKEN: str = '12345'
-    INSTAGRAM_WEBHOOK_TOKEN: str= '12345'
+    INSTAGRAM_WEBHOOK_TOKEN: str = '12345'
     INSTAGRAM_APP_SECRET: str = 12345
+    INSTAGRAM_APP_ID: int = 12345
     INSTAGRAM_SEND_MESSAGE_URL: str = ('https://graph.instagram.com/v22.0/'
                                        'me/messages')
     INSTAGRAM_GET_USER_BASE_URL: str = 'https://graph.instagram.com/v22.0/'

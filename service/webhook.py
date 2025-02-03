@@ -11,7 +11,6 @@ from schema import InstagramNewMessageDataSchema
 @dataclass
 class InstagramWebhookService:
     message_repository: InstagramMessageRepository
-    # user_repository: UserRepository,
     instagram_user_service: InstagramUserService
     instagram_client: InstagramClient
     settings: Settings
@@ -50,31 +49,3 @@ class InstagramWebhookService:
             message=message_data
         )
         return message_data
-
-    # def _create_user_if_not_exist(self, user_id: int) -> int:
-    #     if not self.user_repository.get_user(user_id=user_id):
-    #         instagram_user_schema = self.instagram_client.get_user(
-    #             user_id=user_id
-    #         )
-    #         if not instagram_user_schema:
-    #             raise UserNotFound
-    #         self.user_repository.create_user(
-    #             user_id=instagram_user_schema.id,
-    #             username=instagram_user_schema.username
-    #         )
-    #     return user_id
-
-    # save_massage?
-    # def create_message(
-    #     self, message_data: InstagramNewMessageDataSchema
-    # ):
-    #     user_id = message_data.sender.id
-    #     if not self.user_repository.get_user(
-    #         user_id=user_id
-    #     ):
-    #         self.user_repository.create_user(user_id=user_id)
-    #     message_id = self.message_repository.save_message(
-    #         user_id=user_id, message=message_data
-    #     )
-    #     # message = self.message_repository.get_message(message_id=message_id)
-    #     return message_data

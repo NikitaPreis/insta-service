@@ -47,7 +47,7 @@ class InstagramClient:
         return message_schema
 
     def _get_instagram_user_url(self, user_id: int):
-        if user_id == self.settings.INSTAGRAM_ACCOUNT_ID:
+        if user_id == self.settings.INSTAGRAM_ACCOUNT_SCOPED_ID:
             request_user_fields = 'id,name,username'
         else:
             request_user_fields = self.settings.INSTAGRAM_GET_USER_FIELDS

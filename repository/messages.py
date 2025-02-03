@@ -22,7 +22,6 @@ class InstagramMessageRepository:
     def save_message(
         self, message: InstagramNewMessageDataSchema
     ) -> int:
-        print(message)
         message_model = InstagramMessage(
             sent_time = message.timestamp,
             mid = message.message.mid,
