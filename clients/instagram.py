@@ -25,22 +25,6 @@ class InstagramClient:
                 return user_schema
         raise UserDataNotAvailable
 
-    # def get_user(self, user_id: int) -> InstagramUserProfileSchema:
-    #     if user_id == self.settings.INSTAGRAM_ACCOUNT_ID:
-    #         url = self.settings.INSTAGRAM_SEND_MESSAGE_URL
-    #     else:
-    #         url = self._get_instagram_user_url(user_id=user_id)
-    #     response = requests.get(url=url)
-    #     print(response.json())
-    #     if (response.ok
-    #         and self.settings.CONTENT_TYPE_JSON_HEADER
-    #         in response.headers.get('Content-Type'), ''):
-    #             user_data = response.json()
-    #             print(user_data)
-    #             user_schema = InstagramUserProfileSchema(**user_data)
-    #             return user_schema
-    #     raise UserDataNotAvailable
-
     def send_text_message(
         self, recipient_id: int, text: str
     ) -> InstagramSendMessageBodySchema:
@@ -69,7 +53,6 @@ class InstagramClient:
             request_user_fields = self.settings.INSTAGRAM_GET_USER_FIELDS
         return (
             f'{self.settings.INSTAGRAM_GET_USER_BASE_URL}{user_id}'
-            # f'?fields={self.settings.INSTAGRAM_GET_USER_FIELDS}'
             f'?fields={request_user_fields}'
             f'&access_token={self.settings.INSTAGRAM_USER_TOKEN}'
         )

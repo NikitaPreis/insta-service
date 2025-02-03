@@ -11,12 +11,7 @@ class InstagramMessageRepository:
         self.db_session = db_session
 
     def get_messages(self, user_id) -> list[InstagramMessage]:
-        ### Нужно вернуть сообщения с text и юзеров с username
         query = select(InstagramMessage).where(
-            ### НЕ ХВАТАЕТ УСЛОВИЯ
-            ### СЕЙЧАС ВОЗВРАЩАЮТСЯ СООБЩЕНИЯ
-            ### ТОЛЬКО КОНКРЕТНОГО ЮЗЕРА, А НЕ ДИАЛОГ
-            # InstagramMessage.sender_id == user_id
             (InstagramMessage.sender_id == user_id) |
             (InstagramMessage.recipient_id == user_id)
         ).order_by(InstagramMessage.sent_time)
