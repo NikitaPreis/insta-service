@@ -18,6 +18,7 @@
 * Starlette
 * Uvicorn
 * SQLAlchemy
+* Alembic
 * PostgreSQL
 * Docker
 
